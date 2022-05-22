@@ -1,0 +1,64 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\title{Assignment 4}
+\author{NIMMALA AVINASH(CS21BTECH11039)}
+\begin{document}
+
+\maketitle
+
+\section{Question}
+\begin{frame}{Question}
+    
+{\LARGE \textbf{Example 4-15\\}}
+
+{\Large \textbf{Determine the conditional density  $ f(x|\vert X-\eta\vert\leq k\sigma) $ of an $N(\eta;\sigma)$ random variable.\\}}
+\end{frame}
+\begin{frame}{Solution}
+\begin{align}
+P{|X-\eta|\leq K\sigma} = P{\eta-k\sigma \leq X \leq \eta + k\sigma } = 2 \int_{0}^{k} \frac{1}{\sqrt{2\pi}} e^{-x^{2}/2}dx 
+\end{align}
+Let M = $ |X-\eta|\leq k\sigma $
+\begin{align}
+f(x|M) &= \frac{d}{dx}(F(x|M))\\
+&=\frac{d}{dx}(F(x||X-\eta|\leq k\sigma))\\
+&=\frac{d}{dx}(F(x|\eta-k\sigma\leq X \leq \eta + k\sigma))
+\end{align}
+\end{frame}
+\begin{frame}{solution}
+W.K.T 
+\begin{align}
+F(x|b\leq X \leq a) &= \frac{P\{X\leq x,b\leq X \leq a\}}{P\{b \leq X\leq a\}}\\
+If x\geq a,then \{X \leq x,b\leq X \leq a\} &= \{b\leq X \leq a\}.Hence\\
+=F(x|b\leq X \leq a) &= \frac{F(a)-F(b)}{F(a)-F(b)} = 1 \\
+If b\leq x \leq a,then \{X\leq x,b \leq X \leq a\} &= \{b \leq X \leq x\}.Hence\\
+=F(x|b\leq X \leq a) &= \frac{F(x)-F(b)}{F(a)-F(b)}\\
+if(x\leq b) F(x | b\leq x \leq a) &= 0 
+\end{align}
+\end{frame}
+\begin{frame}{Solution}
+From eq - (9) and (4)
+\begin{align}
+f(x|M) &= \frac{d}{dx} (\frac{F(x)-F(b)}{F(a)-F(b)})\\
+&= \frac{f(x)}{F(a)-F(b)}\\
+f(x) &= \frac{1}{\sqrt{2\pi}}e^{-x^{2}/2}\\
+x -> (x-\eta)^{2}/2(\sigma)^{2}\\
+a &= \eta +k\sigma\\
+b &= \eta -k\sigma\\
+F(a)-f(b) &= F(\eta +k\sigma)-F(\eta -k\sigma)\\
+\implies 
+F(\eta +k\sigma)-F(\eta -k\sigma) &= P(|X-\eta|\leq k\sigma)
+\end{align}
+\end{frame}
+\begin{frame}{Solution}
+\begin{align}
+\implies f(x|M) &= \frac{1}{P(|X-\eta|\leq k\sigma)}\frac{e^{\frac{-(x-\eta)^{2}}{2(\sigma)^{2}}}}{\sigma \sqrt{2\pi}}\\
+M &= |X - \eta|\leq k\sigma\\
+f(x||X-\eta|\leq k \sigma ) &= \frac{1}{P(|X-\eta|\leq k\sigma)}\frac{e^{\frac{-(x-\eta)^{2}}{2(\sigma)^{2}}}}{\sigma \sqrt{2\pi}}
+\end{align}
+\end{frame}
+\end{document}
